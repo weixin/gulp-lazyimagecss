@@ -1,0 +1,35 @@
+{
+  "name": "gulp-lazyImageCSS",
+  "version": "0.0.1",
+  "dependencies": {
+    "async": "^1.5.0",
+    "lodash": "^3.10.1",
+    "request": "^2.54.0",
+    "through2": "^2.0.0",
+    "vinyl": "^1.1.0",
+    "imageinfo": "^1.0.4"
+  },
+  "description": "Time is money",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/littledu/gulp-lazyImageCSS"
+  },
+  "keywords": [
+    "gulpplugin",
+    "lazy",
+    "image",
+    "CSS",
+    "background-size"
+  ],
+  "author": {
+    "name": "littledu",
+    "email": "410491325@qq.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/littledu/gulp-lazyImageCSS/issues"
+  },
+  "homepage": "https://github.com/littledu/gulp-lazyImageCSS",
+  "readme": "README.md"
+}
