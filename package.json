@@ -9,11 +9,11 @@
     "vinyl": "^1.1.0",
     "imageinfo": "^1.0.4"
   },
-  "description": "Time is money",
+  "description": "Be lazy, add images' CSS automatically, like width & height and more.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/littledu/gulp-lazyImageCSS"
+    "url": "https://github.com/weixin/gulp-lazyimagecss"
   },
   "keywords": [
     "gulpplugin",
@@ -28,8 +28,8 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/littledu/gulp-lazyImageCSS/issues"
+    "url": "https://github.com/weixin/gulp-lazyimagecssissues"
   },
-  "homepage": "https://github.com/littledu/gulp-lazyImageCSS",
-  "readme": "README.md"
+  "homepage": "https://github.com/weixin/gulp-lazyimagecss",
+  "readmeFilename": "README.md"
 }
