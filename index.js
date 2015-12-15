@@ -23,7 +23,7 @@ function lazyImageCSS(options) {
         var images = [];
 
         var cssContent = file.contents.toString();
-        var sliceRegex = new RegExp('background-image:[\\s]*url\\(["\']?(?!http[s]?|/)[^]*?([\\./]*?' + options.slice + '/[\\w\\d\\s!./\\-\\_@]*\\.[\\w?#]+)["\']?\\)[^}]*?', 'ig');
+        var sliceRegex = new RegExp('background-image:[\\s]*url\\(["\']?(?!http[s]?|/)[^)]*?([\\./]*?' + options.slice + '/[\\w\\d\\s!./\\-\\_@]*\\.[\\w?#]+)["\']?\\)[^}]*?', 'ig');
         var codelines = cssContent.match(sliceRegex);
 
         if (!codelines || codelines.length === 0) {
