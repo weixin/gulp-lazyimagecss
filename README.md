@@ -9,7 +9,7 @@
 
 Install with [NPM](https://npmjs.org/):
 
-```
+```javascript
 npm install gulp-lazyimagecss --save
 ```
 
@@ -17,7 +17,7 @@ npm install gulp-lazyimagecss --save
 
 **gulpfile.js**
 
-```
+```javascript
 var lazyimagecss = require('gulp-lazyimagecss');
 
 gulp.src(paths.src.less)
@@ -30,7 +30,7 @@ gulp.src(paths.src.less)
 **Options**  
 Set CSS which you wish to be added automatically.
 
-```
+```javascript
 options = lodash.extend({
     width: true,
     height: true,
@@ -44,7 +44,7 @@ options = lodash.extend({
 **CSS In**
 
 
-```
+```css
 .icon-test {
 	background-image: url(../slice/test.png);
 }
@@ -52,7 +52,7 @@ options = lodash.extend({
 
 **CSS Out**
 
-```
+```css
 .icon-test {
 	width: 32px;
 	height: 66px;
