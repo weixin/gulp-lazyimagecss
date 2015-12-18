@@ -57,7 +57,7 @@ options = lodash.extend({
 	width: 32px;
 	height: 66px;
 	background-image: url(../slice/test.png);
-	backgroundSize: 32px;
+	background-size: 32px;
 }
 ```
 
