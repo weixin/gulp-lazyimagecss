@@ -1,4 +1,7 @@
-## gulp-lazyimagecss [![NPM version](https://badge.fury.io/js/gulp-lazyimagecss.png)](http://badge.fury.io/js/gulp-lazyimagecss) [![devDependency Status](https://david-dm.org/weixin/gulp-lazyimagecss/dev-status.png?theme=shields.io)](https://david-dm.org/weixin/gulp-lazyimagecss#info=devDependencies)
+## gulp-lazyimagecss
+[![NPM Version](http://img.shields.io/npm/v/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss) 
+[![NPM Downloads](https://img.shields.io/npm/dm/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss) 
+[![License](https://img.shields.io/npm/l/gulp-lazyimagecss.svg?style=flat)](http://opensource.org/licenses/MIT) 
 
 > Be lazy, add images's CSS automatically, like `width` & `height` and more.    
 > Save time, make money.
@@ -61,7 +64,8 @@ options = lodash.extend({
 }
 ```
 
-## Team & License
+_Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if needed._
 
-* [TmT Team](https://github.com/orgs/TmT/people)
-* [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+## Team
+
+[TmT Team](https://github.com/orgs/TmT/people)
