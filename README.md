@@ -38,7 +38,7 @@ options = lodash.extend({
     width: true,
     height: true,
     backgroundSize: true, 
-    slice: 'slice' // Set slice image path
+    slice: '../slice' // Set slice image path
 }, options);
 ```
 

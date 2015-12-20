@@ -1,10 +1,10 @@
+var fs = require('fs');
+var path = require('path');
+var File = require('vinyl');
 var async = require('async');
 var lodash = require('lodash');
 var through = require('through2');
-var File = require('vinyl');
-var path = require('path');
-var fs = require('fs');
-var imageinfo = require('imageinfo');
+var fastImageSize = require('./lib/fastimagesize');
 
 function lazyImageCSS(options) {
 
@@ -12,7 +12,7 @@ function lazyImageCSS(options) {
         width: true,
         height: true,
         backgroundSize: true,
-        slice: 'slice'
+        slice: '../slice'
     }, options);
 
     // Creating a stream through which each file will pass
@@ -23,7 +23,7 @@ function lazyImageCSS(options) {
         var images = [];
 
         var cssContent = file.contents.toString();
-        var sliceRegex = new RegExp('background-image:[\\s]*url\\(["\']?(?!http[s]?|/)[^)]*?([\\./]*?' + options.slice + '/[\\w\\d\\s!./\\-\\_@]*\\.[\\w?#]+)["\']?\\)[^}]*?', 'ig');
+        var sliceRegex = new RegExp('background-image:[\\s]*url\\(["\']?(?!http[s]?|/)[^)]*?(' + options.slice + '/[\\w\\d\\s!./\\-\\_@]*\\.[\\w?#]+)["\']?\\)[^}]*?', 'ig');
         var codelines = cssContent.match(sliceRegex);
 
         if (!codelines || codelines.length === 0) {
@@ -52,13 +52,14 @@ function lazyImageCSS(options) {
 
             images.push(absolutePath);
 
-            fs.readFile(absolutePath, function (err, data) {
-                if (err) throw err;
-
-                info = imageinfo(data);
-
+            fastImageSize(absolutePath, function (info) {
                 var code = '';
                 var width, height;
+
+                if (info.type === 'unknown') {
+                    console.log('unknown type: ' + absolutePath);
+                    eachCb();
+                }
 
                 if (options.retina) {
                     width = info.width / 2;
@@ -84,10 +85,10 @@ function lazyImageCSS(options) {
 
                 if (code) {
                     cssContent = cssContent.split(backgroundCodeLine).join(code);
+
+                    eachCb();
+
                 }
-
-                eachCb();
-
             });
 
 

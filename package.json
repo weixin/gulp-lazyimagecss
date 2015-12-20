@@ -1,12 +1,11 @@
 {
   "name": "gulp-lazyimagecss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "async": "^1.5.0",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",
-    "vinyl": "^1.1.0",
-    "imageinfo": "^1.0.4"
+    "vinyl": "^1.1.0"
   },
   "description": "Be lazy, add images' CSS automatically, like width & height and more.",
   "main": "index.js",
