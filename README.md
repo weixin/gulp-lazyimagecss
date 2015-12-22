@@ -66,6 +66,11 @@ options = lodash.extend({
 
 _Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if needed._
 
+## Notes
+
+* Get image size from `HEX` data from file buffer via [fast-image-size](https://github.com/Ziv-Barber/fast-image-size), more fast now.
+* Detect `PNG` & `JPG` based on [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
+
 ## Team
 
 [TmT Team](https://github.com/orgs/TmT/people)
