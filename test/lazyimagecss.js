@@ -6,7 +6,7 @@ var noop = function () {};
 var lazyimagecss = require('../');
 
 describe('lazyimagecss test', function() {
-    it('生成 width', function(done) {
+    it('[Generated] Image `width`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -22,7 +22,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('width 值正确', function(done) {
+    it('[Correct] `width`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -38,7 +38,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('生成 height', function(done) {
+    it('[Generated] Image `height` ', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -54,7 +54,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('height 值正确', function(done) {
+    it('[Correct] `height`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -70,7 +70,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('生成 background-size', function(done) {
+    it('[Generated] Image `background-size`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -86,7 +86,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('background-size 值正确', function(done) {
+    it('[Correct] `background-size` ', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -102,7 +102,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('width: false 测试', function(done) {
+    it('[Worked] Option: `width`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss({
@@ -120,7 +120,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('height: false 测试', function(done) {
+    it('[Worked] Option: `height`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss({
@@ -138,7 +138,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('backgroundSize: false 测试', function(done) {
+    it('[Worked] Option: `backgroundSize`', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss({
@@ -156,7 +156,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('slicePath 测试', function(done) {
+    it('[Worked] Option: `slicePath`', function(done) {
 
         vfs.src('./test/src/css/slicePath.css')
             .pipe(lazyimagecss({
@@ -165,7 +165,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                //能跑起来证明正确
+                // check it work or not.
                 content.match(/width/g).length.should.equal(4);
 
                 cb();

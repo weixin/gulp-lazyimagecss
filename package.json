@@ -7,6 +7,9 @@
     "through2": "^2.0.0",
     "vinyl": "^1.1.0"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "description": "Be lazy, add images' CSS automatically, like width & height and more.",
   "main": "index.js",
   "repository": {
