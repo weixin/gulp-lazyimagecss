@@ -1,0 +1,15 @@
+.excel{
+    background-image: url(../slice/excel.png);
+}
+
+.excel-retina{
+    background-image: url(../slice/excel@2x.png);
+}
+
+.word{
+    background-image: url(../slice/word.png);
+}
+
+.word-retina{
+    background-image: url(../slice/word@2x.png);
+}
