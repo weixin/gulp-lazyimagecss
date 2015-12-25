@@ -22,7 +22,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('[Correct] `width`', function(done) {
+    it('[Correct] `width` value', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -54,7 +54,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('[Correct] `height`', function(done) {
+    it('[Correct] `height` value', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
@@ -86,7 +86,7 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('[Correct] `background-size` ', function(done) {
+    it('[Correct] `background-size` value', function(done) {
 
         vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss())
