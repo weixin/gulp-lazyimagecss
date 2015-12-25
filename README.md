@@ -2,7 +2,8 @@
 
 [![NPM Version](http://img.shields.io/npm/v/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss "Package version") 
 [![Build Status](https://travis-ci.org/weixin/node-lwip.svg)](https://travis-ci.org/weixin/gulp-lazyimagecss "Build Status")
-[![Windows Build status](https://img.shields.io/appveyor/ci/hzlzh/gulp-lazyimagecss.svg?label=Windows%20build)](https://ci.appveyor.com/project/hzlzh/gulp-lazyimagecss) 
+[![Windows Build status](https://img.shields.io/appveyor/ci/hzlzh/gulp-lazyimagecss.svg?label=Win%20build)](https://ci.appveyor.com/project/hzlzh/gulp-lazyimagecss) 
+[![devDependencies](https://img.shields.io/david/dev/weixin/gulp-lazyimagecss.svg)](https://ci.appveyor.com/project/weixin/gulp-lazyimagecss "devDependencies") 
 [![NPM Downloads](https://img.shields.io/npm/dm/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss "NPM Downloads") 
 
 [![Join the chat at https://gitter.im/weixin/gulp-lazyimagecss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/TmT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -79,6 +80,7 @@ _Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if n
 * Detect `PNG` & `JPG` based on [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures)
 * No minimum image buffer size limited now [/fast-image-size/pull/5](https://github.com/Ziv-Barber/fast-image-size/pull/5).
 
-## Team
+## Contributing
 
-[TmT Team](https://github.com/orgs/TmT/people)
+This repo is build and maintained by [TmT Team](https://github.com/orgs/TmT/people).  
+If you get any bugs or feature requests, please open a new [Issue](/issues) or send us [Pull Request](/pulls), Thank you for your contributions.
