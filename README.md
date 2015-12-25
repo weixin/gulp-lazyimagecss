@@ -2,7 +2,7 @@
 
 [![NPM Version](http://img.shields.io/npm/v/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss "Package version") 
 [![Build Status](https://travis-ci.org/weixin/node-lwip.svg)](https://travis-ci.org/weixin/gulp-lazyimagecss "Build Status")
-[![Windows Build status](https://img.shields.io/appveyor/ci/weixin/gulp-lazyimagecss/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/weixin/gulp-lazyimagecss/branch/master) 
+[![Windows Build status](https://img.shields.io/appveyor/ci/hzlzh/gulp-lazyimagecss.svg?label=Windows%20build)](https://ci.appveyor.com/project/hzlzh/gulp-lazyimagecss) 
 [![NPM Downloads](https://img.shields.io/npm/dm/gulp-lazyimagecss.svg?style=flat)](https://www.npmjs.com/package/gulp-lazyimagecss "NPM Downloads") 
 
 [![Join the chat at https://gitter.im/weixin/gulp-lazyimagecss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/weixin/gulp-lazyimagecss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
