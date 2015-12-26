@@ -83,4 +83,4 @@ _Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if n
 ## Contributing
 
 This repo is build and maintained by [TmT Team](https://github.com/orgs/TmT/people).  
-If you get any bugs or feature requests, please open a new [Issue](/issues) or send us [Pull Request](/pulls), Thank you for your contributions.
+If you get any bugs or feature requests, please open a new [Issue](https://github.com/weixin/gulp-lazyimagecss/issues) or send us [Pull Request](https://github.com/weixin/gulp-lazyimagecss/pulls), Thank you for your contributions.
