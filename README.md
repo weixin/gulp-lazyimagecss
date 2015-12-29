@@ -43,10 +43,10 @@ Set CSS which you wish to be added automatically.
 
 ```javascript
 options = lodash.extend({
-    width: true,
-    height: true,
-    backgroundSize: true, 
-    slice: '../slice' // Set slice image path
+    width: true, // Output width in CSS
+    height: true, // Output height in CSS
+    backgroundSize: true, // Output background-size in CSS
+    slicePath: '../slice' // Set slice image path
 }, options);
 ```
 
@@ -72,7 +72,7 @@ options = lodash.extend({
 }
 ```
 
-_Tips: Use [PostCSS](https://github.com/postcss/postcss) with the `CSS Out` if needed._
+_Tips: Use [PostCSS](https://github.com/postcss/postcss) & [postcss-discard-duplicates](https://github.com/ben-eb/postcss-discard-duplicates) with `CSS Out` if needed._
 
 ## Notes
 
