@@ -1,15 +1,44 @@
-.excel{
-    background-image: url(../slice/excel.png);
+.bg{
+    width: 100%;
+    background: url(../slice/bg@2x.png) no-repeat center center;
+}
+
+.background-color{
+    background: #000;
+}
+
+.base64{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAAHf3OLQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+1pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNCAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTUtMDQtMjFUMDg6MjI6NTArMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE1LTA0LTIxVDA4OjI4OjAzKzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE1LTA0LTIxVDA4OjI4OjAzKzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBMDdDMUFFN0UwMjAxMUU0QkRBOTkxRkY2QTE3MEZGMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBMDdDMUFFOEUwMjAxMUU0QkRBOTkxRkY2QTE3MEZGMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBz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);
 }
 
 .excel-retina{
-    background-image: url(../slice/excel@2x.png);
+    background-image: url(../img/excel@2x.png);
+    -webkit-background-size: cover;
 }
 
 .word{
-    background-image: url(../slice/word.png);
+    background-image: url(../slice/img/word.png);
 }
 
 .word-retina{
     background-image: url(../slice/word@2x.png);
+}
+
+@media (-webkit-min-device-pixel-ratio:2), (min-device-pixel-ratio: 2){
+    .word{
+        background-image: url(../slice/img/word.png);
+    }
+
+    .word-retina{
+        background-image: url(../slice/word@2x.png);
+    }
+}
+
+@keyframes anim {
+    0%{
+        background-image: url(../slice/keyframe1@2x.png);
+    }
+    100%{
+        background-image: url(../slice/keyframe2@2x.png);
+    }
 }

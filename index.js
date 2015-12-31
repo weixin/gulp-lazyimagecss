@@ -2,106 +2,149 @@ var fs = require('fs');
 var path = require('path');
 var File = require('vinyl');
 var async = require('async');
-var lodash = require('lodash');
+var _ = require('lodash');
 var through = require('through2');
 var fastImageSize = require('./lib/fastimagesize');
+var css = require('css');
 
 function lazyImageCSS(options) {
 
-    options = lodash.extend({
+    options = _.extend({
         width: true,
         height: true,
         backgroundSize: true,
-        slicePath: '../slice'
+        imagePath: []
     }, options);
 
-    // Creating a stream through which each file will pass
     return through.obj(function (file, enc, cb) {
 
-        var _this = this;
-
-        var images = [];
-
         var cssContent = file.contents.toString();
-        var sliceRegex = new RegExp('background-image:[\\s]*url\\(["\']?(?!http[s]?|/)[^)]*?(' + options.slicePath + '/[\\w\\d\\s!./\\-\\_@]*\\.[\\w?#]+)["\']?\\)[^}]*?', 'ig');
-        var codelines = cssContent.match(sliceRegex);
 
-        if (!codelines || codelines.length === 0) {
-            _this.push(new File({
-                base: file.base,
-                path: file.path,
-                contents: file.contents
-            }));
-            return cb(null);
+        var imagePath = options.imagePath;
+
+        if (imagePath.length) {
+            imagePath = '(' + options.imagePath.join('|') + '/)';
+            imagePath = imagePath.replace(/\./g, '\\.');
+        } else {
+            imagePath = '';
         }
 
-        async.eachSeries(codelines, function (backgroundCodeLine, eachCb) {
+        var imageRegex = new RegExp('url\\(["\']?(' + imagePath + '[^)]*?)["\']?\\)');
 
-            var relativePath = backgroundCodeLine.replace(sliceRegex, '$1');
-            var absolutePath = path.join(path.dirname(file.path), relativePath);
+        var obj = css.parse(cssContent);
 
-            options.retina = false;
+        function setProperty(property, value) {
+            return {
+                "type": "declaration",
+                "property": property,
+                "value": value
+            };
+        }
 
-            if (backgroundCodeLine.indexOf('@2x') > 0) {
-                options.retina = true;
+        function parseRules(rules) {
+
+            for (var i = 0; i < rules.length; i++) {
+
+                var rule = rules[i];
+
+                if (rule.type === 'keyframes') {
+                    parseRules(rule.keyframes);
+                }
+
+                if (rule.type === 'media') {
+                    parseRules(rule.rules);
+                }
+
+                if (rule.type === 'rule' || rule.type === 'keyframe') {
+
+                    var declarations = rule.declarations;
+                    var code = {};
+
+                    declarations.forEach(function (declaration) {
+                        code[declaration.property] = declaration.value;
+                    });
+
+                    var property;
+                    var hasImage = false;
+
+                    if (code['background-image']) {
+                        property = 'background-image';
+                        hasImage = true;
+                    } else if (code['background']) {
+                        property = 'background';
+                        hasImage = true;
+                    }
+
+                    if (!hasImage) {
+                        continue;
+                    }
+
+                    var value = code[property];
+
+                    var matchValue = imageRegex.exec(value);
+
+                    if (!matchValue || matchValue[1].indexOf('data:') === 0) {
+                        continue;
+                    }
+
+                    var relativePath = matchValue[1];
+                    var absolutePath = path.join(path.dirname(file.path), relativePath);
+
+                    if (value.indexOf('@2x') > -1) {
+                        options.retina = true;
+                    } else {
+                        options.retina = false;
+                    }
+
+                    var info = fastImageSize(absolutePath);
+
+                    if (info.type === 'unknown') {
+                        console.log('' + 'unknown type: ' + absolutePath);
+                        continue;
+                    }
+
+                    var width, height, newDeclaration;
+
+                    if (options.retina) {
+                        width = info.width / 2 + 'px';
+                        height = info.height / 2 + 'px';
+                    } else {
+                        width = info.width + 'px';
+                        height = info.height + 'px';
+                    }
+
+                    if (options.width && !code['width']) {
+                        newDeclaration = setProperty('width', width);
+                        declarations.push(newDeclaration);
+                    }
+
+                    if (options.height && !code['height']) {
+                        newDeclaration = setProperty('height', height);
+                        declarations.push(newDeclaration);
+                    }
+
+                    if (options.backgroundSize && options.retina && !code['background-size'] && !code['-webkit-background-size']) {
+                        newDeclaration = setProperty('background-size', width);
+                        declarations.push(newDeclaration);
+                    }
+                }
             }
+        }
 
-            if (lodash.includes(images, absolutePath)) {
-                return eachCb();
-            }
+        if (obj.stylesheet.rules.length > 0) {
+            parseRules(obj.stylesheet.rules);
+            cssContent = css.stringify(obj);
+        }
 
-            images.push(absolutePath);
+        this.push(new File({
+            base: file.base,
+            path: file.path,
+            contents: new Buffer(cssContent)
+        }));
 
-            fastImageSize(absolutePath, function (info) {
-                var code = '';
-                var width, height;
-
-                if (info.type === 'unknown') {
-                    console.log('unknown type: ' + absolutePath);
-                    eachCb();
-                }
-
-                if (options.retina) {
-                    width = info.width / 2;
-                    height = info.height / 2;
-                } else {
-                    width = info.width;
-                    height = info.height;
-                }
-
-                if (options.width) {
-                    code += 'width: ' + width + 'px;';
-                }
-
-                if (options.height) {
-                    code += 'height: ' + height + 'px;';
-                }
-
-                code += backgroundCodeLine + ';';
-
-                if (options.backgroundSize && options.retina) {
-                    code += 'background-size: ' + width + 'px;';
-                }
-
-                if (code) {
-                    cssContent = cssContent.split(backgroundCodeLine).join(code);
-
-                    eachCb();
-
-                }
-            });
-
-
-        }, function () {
-            _this.push(new File({
-                base: file.base,
-                path: file.path,
-                contents: new Buffer(cssContent)
-            }));
-
-            cb();
-        })
+        cb();
     });
+
 }
 
 // Exporting the plugin main function

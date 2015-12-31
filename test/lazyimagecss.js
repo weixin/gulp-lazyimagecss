@@ -1,9 +1,15 @@
 var should = require('should');
 var vfs = require('vinyl-fs');
 var through2 = require('through2');
+var css = require('css');
 var noop = function () {};
 
 var lazyimagecss = require('../');
+
+//vfs.src('./src/css/style.css')
+//    .pipe(lazyimagecss())
+//    .pipe(vfs.dest('./src/ouput'))
+//    .on('data', noop);
 
 describe('lazyimagecss test', function() {
     it('[Generated] Image `width`', function(done) {
@@ -13,7 +19,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                content.match(/width/g).length.should.equal(4);
+                content.match(/width/g).length.should.equal(8);
 
                 cb();
             }))
@@ -45,7 +51,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                content.match(/height/g).length.should.equal(4);
+                content.match(/height/g).length.should.equal(8);
 
                 cb();
             }))
@@ -77,7 +83,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                content.match(/background-size/g).length.should.equal(2);
+                content.match(/background-size/g).length.should.equal(6);
 
                 cb();
             }))
@@ -111,7 +117,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                content.indexOf('width').should.equal(-1);
+                content.match(/width/g).length.should.equal(1);
 
                 cb();
             }))
@@ -147,7 +153,7 @@ describe('lazyimagecss test', function() {
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
-                content.indexOf('background-size').should.equal(-1);
+                content.match(/background-size/g).length.should.equal(1);
 
                 cb();
             }))
@@ -156,17 +162,17 @@ describe('lazyimagecss test', function() {
 
     });
 
-    it('[Worked] Option: `slicePath`', function(done) {
+    it('[Worked] Option: `imagePath`', function(done) {
 
-        vfs.src('./test/src/css/slicePath.css')
+        vfs.src('./test/src/css/style.css')
             .pipe(lazyimagecss({
-                slicePath: '../img'
+                imagePath: ['../img']
             }))
             .pipe(through2.obj(function(file, enc, cb){
                 content = file.contents.toString();
 
                 // check it work or not.
-                content.match(/width/g).length.should.equal(4);
+                content.match(/background-size/g).length.should.equal(1);
 
                 cb();
             }))
