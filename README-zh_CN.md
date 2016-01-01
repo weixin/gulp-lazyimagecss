@@ -94,6 +94,7 @@ _提示: 输出 CSS 可配合使用 [PostCSS](https://github.com/postcss/postcss
 ## 说明
 
 * 如果 `width` / `height` / `background-size` 等属性已存在，则不会覆盖**对应的**原始属性值。
+* 使用 `background-image: url()` 或 `background: url()` 均可被正确识别。
 * 通过读取图片 `HEX` 数据取得图片 宽/高 信息，大大提升相应速度，参看：[fast-image-size](https://github.com/Ziv-Barber/fast-image-size)。
 * 通过 [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures) 判断检测图片类别，如：`PNG` & `JPG`。
 * 去掉图片最小 `buffer size` 的限制，参看：[/fast-image-size/pull/5](https://github.com/Ziv-Barber/fast-image-size/pull/5)。

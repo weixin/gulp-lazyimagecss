@@ -95,6 +95,7 @@ _Tips: Use [PostCSS](https://github.com/postcss/postcss) with `CSS Out` if neede
 ## Notes
 
 * CSS property generating will be ignored if any of those `width` / `height` / `background-size` already set.
+* Both `background-image: url()` and `background: url()` can be detected successfully.
 * Get image size from `HEX` data from file buffer via [fast-image-size](https://github.com/Ziv-Barber/fast-image-size), more fast now.
 * Detect `PNG` & `JPG` based on [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures).
 * No minimum image buffer size limited now [/fast-image-size/pull/5](https://github.com/Ziv-Barber/fast-image-size/pull/5).
