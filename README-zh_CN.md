@@ -82,7 +82,7 @@ options = lodash.extend({
     height: 32px;
 }
 .icon-test-retina {
-	background-image: url(../slice/test@2x.png); // test.png 原图片尺寸为 64x64
+	background-image: url(../slice/test@2x.png); // test@2x.png 原图片尺寸为 64x64
 	width: 32px;
     height: 32px;
     background-size: 32px;
@@ -93,12 +93,12 @@ _提示: 输出 CSS 可配合使用 [PostCSS](https://github.com/postcss/postcss
 
 ## 说明
 
-* 如果 `width` / `height` / `background-size` 等属性已存在，工具则不会覆盖原属性值。
-* 通过读取图片 `HEX` 数据取得图片 宽/高 信息，大大提示了性能 [fast-image-size](https://github.com/Ziv-Barber/fast-image-size), more fast now.
+* 如果 `width` / `height` / `background-size` 等属性已存在，则不会覆盖**对应的**原始属性值。
+* 通过读取图片 `HEX` 数据取得图片 宽/高 信息，大大提升相应速度，参看：[fast-image-size](https://github.com/Ziv-Barber/fast-image-size)。
 * 通过 [file signatures](https://en.wikipedia.org/wiki/List_of_file_signatures) 判断检测图片类别，如：`PNG` & `JPG`。
 * 去掉图片最小 `buffer size` 的限制，参看：[/fast-image-size/pull/5](https://github.com/Ziv-Barber/fast-image-size/pull/5)。
 
 ## 参与贡献
 
 此项目由 [TmT 团队](https://github.com/orgs/TmT/people) 创建和维护。  
-如果你有 `Bug反馈` 或 `功能建议`, 请创建 [Issue](https://github.com/weixin/gulp-lazyimagecss/issues) 或发送 [Pull Request](https://github.com/weixin/gulp-lazyimagecss/pulls) 给我们，感谢你的参与和贡献。
+如果你有 `Bug反馈` 或 `功能建议`，请创建 [Issue](https://github.com/weixin/gulp-lazyimagecss/issues) 或发送 [Pull Request](https://github.com/weixin/gulp-lazyimagecss/pulls) 给我们，感谢你的参与和贡献。

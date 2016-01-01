@@ -83,7 +83,7 @@ options = lodash.extend({
     height: 32px;
 }
 .icon-test-retina {
-	background-image: url(../slice/test@2x.png); // test.png - 64x64
+	background-image: url(../slice/test@2x.png); // test@2x.png - 64x64
 	width: 32px;
     height: 32px;
     background-size: 32px;
