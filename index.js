@@ -6,6 +6,7 @@ var _ = require('lodash');
 var through = require('through2');
 var fastImageSize = require('./lib/fastimagesize');
 var css = require('css');
+var applySourceMap = require('vinyl-sourcemaps-apply');
 
 function lazyImageCSS(options) {
 
@@ -136,11 +137,30 @@ function lazyImageCSS(options) {
             cssContent = css.stringify(obj);
         }
 
-        this.push(new File({
-            base: file.base,
-            path: file.path,
-            contents: new Buffer(cssContent)
-        }));
+        file.contents = new Buffer(cssContent);
+
+        if(file.sourceMap){
+            var map = file.sourceMap;
+
+            map.file = file.relative;
+            map.sources = map.sources.map(function (source) {
+                return path.relative(file.base, source);
+            });
+
+
+            applySourceMap(file, map);
+        }
+
+
+
+        this.push(file);
+
+
+        // this.push(new File({
+        //     base: file.base,
+        //     path: file.path,
+        //     contents: new Buffer(cssContent)
+        // }));
 
         cb();
     });

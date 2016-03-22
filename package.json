@@ -35,9 +35,10 @@
   "homepage": "https://github.com/weixin/gulp-lazyimagecss",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "gulp-sourcemaps": "^1.6.0",
     "mocha": "~2.3.4",
+    "should": "^8.0.2",
     "through2": "^2.0.0",
-    "vinyl-fs": "^2.2.1",
-    "should": "^8.0.2"
+    "vinyl-fs": "^2.2.1"
   }
 }
