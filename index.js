@@ -123,7 +123,7 @@ function lazyImageCSS(options) {
                         declarations.push(newDeclaration);
                     }
 
-                    if (options.backgroundSize && options.retina && !code['background-size'] && !code['-webkit-background-size']) {
+                    if (options.backgroundSize && (options.retina || info.type == 'svg') && !code['background-size'] && !code['-webkit-background-size']) {
                         newDeclaration = setProperty('background-size', width);
                         declarations.push(newDeclaration);
                     }
