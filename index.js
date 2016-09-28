@@ -124,7 +124,7 @@ function lazyImageCSS(options) {
                     }
 
                     if (options.backgroundSize && (options.retina || info.type == 'svg') && !code['background-size'] && !code['-webkit-background-size']) {
-                        newDeclaration = setProperty('background-size', width);
+                        newDeclaration = newDeclaration = setProperty('background-size', width + ' ' + height);
                         declarations.push(newDeclaration);
                     }
                 }
